@@ -19,6 +19,11 @@ RUN "date"
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-install pdo pdo_mysql
 
+#install mongodb
+RUN apt-get install -y libssl-dev && \
+    pecl install mongodb && \
+    echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/20-mongodb.ini
+
 
 # install xdebug
 RUN pecl install xdebug

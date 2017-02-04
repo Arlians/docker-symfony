@@ -37,3 +37,11 @@ services:
         volumes_from:
             - php
             - nginx
+    mongo:
+        image: mongo:latest
+        volumes:
+            - ./.data/mongo:/data/db
+        ports:
+            - 27017:27017
+
+
