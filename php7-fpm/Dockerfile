@@ -47,6 +47,11 @@ RUN echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/conf.d/docker-php-ext-o
 RUN echo "opcache.enable_cli=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
+# Install GD
+RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev
+RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib64
+RUN docker-php-ext-install gd
+
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
