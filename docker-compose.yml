@@ -16,6 +16,9 @@ services:
         build: php7-fpm
         ports:
             - 9000:9000
+        links:
+            - db
+            - redis
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony
             - ./logs/symfony:/var/www/symfony/app/logs
@@ -37,6 +40,10 @@ services:
         volumes_from:
             - php
             - nginx
+    redis:
+        image: redis
+        ports:
+            - 6389:6379
     mongo:
         image: mongo:latest
         volumes:
