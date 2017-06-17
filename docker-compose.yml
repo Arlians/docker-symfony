@@ -17,8 +17,6 @@ services:
             - redis
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony
-            - ./logs/symfony:/var/www/symfony/app/logs
-            - ./uploads:/var/www/symfony/web/uploads
     nginx:
         build: nginx
         ports:
